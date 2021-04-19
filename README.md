@@ -243,9 +243,7 @@ $item->goods->name; // $item->goods is instanceof 'app\model\Goods'
 
 # The Collection And Item
 
-`Collection` and `Overtrue\LaravelShoppingCart\Item` are instanceof `Illuminate\Support\Collection`, Usage Refer to：[Collections - Laravel doc.](http://laravel.com/docs/5.0/collections)
-
-properties of `Overtrue\LaravelShoppingCart\Item`:
+properties of `yzh52521\ShoppingCart\Item`:
 
 - `id`       - your goods item ID.
 - `name`     - Name of item.
@@ -259,6 +257,3 @@ properties of `Overtrue\LaravelShoppingCart\Item`:
 And methods:
 
  - `rawId()` - Return the raw ID of item.
-
-
-  [1]: https://github.com/overtrue/laravel-shopping-cart
