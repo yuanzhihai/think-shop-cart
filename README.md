@@ -5,7 +5,7 @@
 2. Item 增加 Model 属性返回。因为购物车可能是SPU或者SKU，因此直接通过 model 属性直接返回相关对象。
 3. 支持多 Guard. 商城购物车和导购购物车。
 
-> 已经完成了 Session 和 Database 模式下的单元测试，而且正在果酱小店产品线上使用中. 可放心使用.
+> 已经完成了 Session 和 Database 模式下的单元测试 可放心使用.
 
 ## Installation
 
