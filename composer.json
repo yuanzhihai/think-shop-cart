@@ -21,5 +21,15 @@
             "yzh52521\\ShoppingCart\\": "src/"
         }
     },
+    "extra": {
+        "think": {
+            "config": {
+                "cart": "src/config.php"
+            },
+            "services": [
+                "yzh52521\\ShoppingCart\\Service"
+            ]
+        }
+    },
     "license": "MIT"
 }
