@@ -32,9 +32,9 @@ return [
 You can change data Storage in `config/cart.php` file.
 
 ```php
-'storage' => \iBrand\ShoppingCart\storage\DatabaseStorage::class,
+'storage' => \yzh52521\ShoppingCart\storage\DatabaseStorage::class,
   
-'storage' => \iBrand\ShoppingCart\storage\SessionStorage::class,
+'storage' => \yzh52521\ShoppingCart\storage\SessionStorage::class,
 ```
 
 If you use Database Storage, you need to execute `php think cart:table`
