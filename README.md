@@ -271,3 +271,6 @@ properties of `yzh52521\ShoppingCart\Item`:
 And methods:
 
  - `rawId()` - Return the raw ID of item.
+# License
+
+MIT
