@@ -1,5 +1,5 @@
 
-购物车在电商场景中基本是必须的一个模块，本包是基于 [overtrue/laravel-shopping-cart][1] 进行扩展开发，主要实现了以下扩展：
+购物车在电商场景中基本是必须的一个模块，本包是基于 [overtrue/laravel-shopping-cart] 进行扩展开发，主要实现了以下扩展：
 
 1. 购物车数据支持 Database 存储
 2. Item 增加 Model 属性返回。因为购物车可能是SPU或者SKU，因此直接通过 model 属性直接返回相关对象。
