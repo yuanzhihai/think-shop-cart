@@ -3,15 +3,13 @@
 namespace yzh52521\ShoppingCart;
 
 
-use yzh52521\ShoppingCart\command\CreateShoppingCart;
+use yzh52521\ShoppingCart\command\Publish;
 
 class Service extends \think\Service
 {
 
     public function boot()
     {
-        $this->commands([
-            CreateShoppingCart::class,
-        ]);
+        $this->commands(['shoppingcart:publish' => Publish::class]);
     }
 }
