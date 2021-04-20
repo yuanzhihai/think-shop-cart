@@ -37,7 +37,21 @@ You can change data Storage in `config/cart.php` file.
 'storage' => \yzh52521\ShoppingCart\storage\SessionStorage::class,
 ```
 
-If you use Database Storage, you need to execute `php think cart:table`
+If you use Database Storage, you need to execute 
+
+发布配置文件和数据库迁移文件：
+
+```
+php think tauthz:publish
+```
+执行迁移工具（**确保数据库配置信息正确**）：
+
+```
+php think migrate:run
+```
+
+这将创建名为 `shopping_cart` 的表。
+
 
 ### Add item to cart
 
