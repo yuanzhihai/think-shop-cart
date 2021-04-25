@@ -4,7 +4,7 @@ namespace yzh52521\ShoppingCart;
 
 use think\Facade as BaseFacade;
 
-class Facade extends BaseFacade
+class ShopCart extends BaseFacade
 {
     protected static function getFacadeClass()
     {

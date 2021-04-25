@@ -58,7 +58,7 @@ php think migrate:run
 Add a new item.
 
 ```php
-Item | null Cart::add(
+Item | null ShopCart::add(
                     string | int $id,
                     string $name,
                     int $quantity,
@@ -70,7 +70,7 @@ Item | null Cart::add(
 **example:**
 
 ```php
-$row = Cart::add(37, 'Item name', 5, 100.00, ['color' => 'red', 'size' => 'M']);
+$row = ShopCart::add(37, 'Item name', 5, 100.00, ['color' => 'red', 'size' => 'M']);
 // Item:
 //    id       => 37
 //    name     => 'Item name'
@@ -90,16 +90,16 @@ $row->qty; // 5
 Update the specified item.
 
 ```php
-Item Cart::update(string $rawId, int $quantity);
-Item Cart::update(string $rawId, array $arrtibutes);
+Item ShopCart::update(string $rawId, int $quantity);
+Item ShopCart::update(string $rawId, array $arrtibutes);
 ```
 
 **example:**
 
 ```php
-Cart::update('8a48aa7c8e5202841ddaf767bb4d10da', ['name' => 'New item name');
+ShopCart::update('8a48aa7c8e5202841ddaf767bb4d10da', ['name' => 'New item name');
 // or only update quantity
-Cart::update('8a48aa7c8e5202841ddaf767bb4d10da', 5);
+ShopCart::update('8a48aa7c8e5202841ddaf767bb4d10da', 5);
 ```
 
 ### Get all items
@@ -107,13 +107,13 @@ Cart::update('8a48aa7c8e5202841ddaf767bb4d10da', 5);
 Get all the items.
 
 ```php
-Collection Cart::all();
+Collection ShopCart::all();
 ```
 
 **example:**
 
 ```php
-$items = Cart::all();
+$items = ShopCart::all();
 ```
 
 
@@ -122,13 +122,13 @@ $items = Cart::all();
 Get the specified item.
 
 ```php
-Item Cart::get(string $rawId);
+Item ShopCart::get(string $rawId);
 ```
 
 **example:**
 
 ```php
-$item = Cart::get('8a48aa7c8e5202841ddaf767bb4d10da');
+$item = ShopCart::get('8a48aa7c8e5202841ddaf767bb4d10da');
 ```
 
 ### Remove item
@@ -136,13 +136,13 @@ $item = Cart::get('8a48aa7c8e5202841ddaf767bb4d10da');
 Remove the specified item by raw ID.
 
 ```php
-boolean Cart::remove(string $rawId);
+boolean ShopCart::remove(string $rawId);
 ```
 
 **example:**
 
 ```php
-Cart::remove('8a48aa7c8e5202841ddaf767bb4d10da');
+ShopCart::remove('8a48aa7c8e5202841ddaf767bb4d10da');
 ```
 
 ### Destroy cart
@@ -150,14 +150,14 @@ Cart::remove('8a48aa7c8e5202841ddaf767bb4d10da');
 Clean Shopping Cart.
 
 ```php
-boolean Cart::destroy();
-boolean Cart::clean(); // alias of destroy();
+boolean ShopCart::destroy();
+boolean ShopCart::clean(); // alias of destroy();
 ```
 
 **example:**
 
 ```php
-Cart::destroy();// or Cart::clean();
+ShopCart::destroy();// or Cart::clean();
 ```
 
 ### Total price
@@ -165,16 +165,16 @@ Cart::destroy();// or Cart::clean();
 Returns the total of all items.
 
 ```php
-int | float Cart::total(); // alias of totalPrice();
-int | float Cart::totalPrice();
+int | float ShopCart::total(); // alias of totalPrice();
+int | float ShopCart::totalPrice();
 ```
 
 **example:**
 
 ```php
-$total = Cart::total();
+$total = ShopCart::total();
 // or
-$total = Cart::totalPrice();
+$total = ShopCart::totalPrice();
 ```
 
 
@@ -183,17 +183,17 @@ $total = Cart::totalPrice();
 Return the number of rows.
 
 ```php
-int Cart::countRows();
+int ShopCart::countRows();
 ```
 
 **example:**
 
 ```php
-Cart::add(37, 'Item name', 5, 100.00, ['color' => 'red', 'size' => 'M']);
-Cart::add(37, 'Item name', 1, 100.00, ['color' => 'red', 'size' => 'M']);
-Cart::add(37, 'Item name', 5, 100.00, ['color' => 'red', 'size' => 'M']);
-Cart::add(127, 'foobar', 15, 100.00, ['color' => 'green', 'size' => 'S']);
-$rows = Cart::countRows(); // 2
+ShopCart::add(37, 'Item name', 5, 100.00, ['color' => 'red', 'size' => 'M']);
+ShopCart::add(37, 'Item name', 1, 100.00, ['color' => 'red', 'size' => 'M']);
+ShopCart::add(37, 'Item name', 5, 100.00, ['color' => 'red', 'size' => 'M']);
+ShopCart::add(127, 'foobar', 15, 100.00, ['color' => 'green', 'size' => 'S']);
+$rows = ShopCart::countRows(); // 2
 ```
 
 
@@ -202,7 +202,7 @@ $rows = Cart::countRows(); // 2
 Returns the quantity of all items
 
 ```php
-int Cart::count($totalItems = true);
+int ShopCart::count($totalItems = true);
 ```
 
 `$totalItems` : When `false`,will return the number of rows.
@@ -210,10 +210,10 @@ int Cart::count($totalItems = true);
 **example:**
 
 ```php
-Cart::add(37, 'Item name', 5, 100.00, ['color' => 'red', 'size' => 'M']);
-Cart::add(37, 'Item name', 1, 100.00, ['color' => 'red', 'size' => 'M']);
-Cart::add(37, 'Item name', 5, 100.00, ['color' => 'red', 'size' => 'M']);
-$count = Cart::count(); // 11 (5+1+5)
+ShopCart::add(37, 'Item name', 5, 100.00, ['color' => 'red', 'size' => 'M']);
+ShopCart::add(37, 'Item name', 1, 100.00, ['color' => 'red', 'size' => 'M']);
+ShopCart::add(37, 'Item name', 5, 100.00, ['color' => 'red', 'size' => 'M']);
+$count = ShopCart::count(); // 11 (5+1+5)
 ```
 
 ### Search items
@@ -221,21 +221,21 @@ $count = Cart::count(); // 11 (5+1+5)
 Search items by property.
 
 ```php
-Collection Cart::search(array $conditions);
+Collection ShopCart::search(array $conditions);
 ```
 
 **example:**
 
 ```php
-$items = Cart::search(['color' => 'red']);
-$items = Cart::search(['name' => 'Item name']);
-$items = Cart::search(['qty' => 10]);
+$items = ShopCart::search(['color' => 'red']);
+$items = ShopCart::search(['name' => 'Item name']);
+$items = ShopCart::search(['qty' => 10]);
 ```
 
 ### Check empty
 
 ```php
-bool Cart::isEmpty();
+bool ShopCart::isEmpty();
 ```
 
 ### Specifies the associated model
@@ -243,14 +243,26 @@ bool Cart::isEmpty();
 Specifies the associated model of item.
 
 ```php
-Cart Cart::associate(string $modelName);
+Cart ShopCart::associate(string $modelName);
 ```
 
+session
 **example:**
 
 ```php
-Cart::associate('app\model\Goods');
-$item = Cart::get('8a48aa7c8e5202841ddaf767bb4d10da');
+ShopCart::associate('app\model\Goods');
+$item = ShopCart::get('8a48aa7c8e5202841ddaf767bb4d10da');
+$item->goods->name; // $item->goods is instanceof 'app\model\Goods'
+```
+
+database
+**example:**
+
+```php
+ShopCart::setStorage(new DatabaseStorage());
+ShopCart::associate('app\model\Goods');
+ShopCart::name('12');
+$item = ShopCart::get('8a48aa7c8e5202841ddaf767bb4d10da');
 $item->goods->name; // $item->goods is instanceof 'app\model\Goods'
 ```
 
