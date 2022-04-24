@@ -259,7 +259,6 @@ database
 **example:**
 
 ```php
-ShopCart::setStorage(new DatabaseStorage());
 ShopCart::associate('app\model\Goods');
 ShopCart::name('web.12');
 $item = ShopCart::get('8a48aa7c8e5202841ddaf767bb4d10da');
