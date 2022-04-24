@@ -11,7 +11,7 @@ class Service extends \think\Service
 
     public function register()
     {
-        $this->app->bind(Cart::class, function () {
+        $this->app->bind('cart', function () {
             $storage = config('cart.storage');
             $cart    = new Cart(new $storage());
             if (SessionStorage::class == $storage) {
