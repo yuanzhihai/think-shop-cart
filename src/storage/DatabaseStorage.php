@@ -62,11 +62,11 @@ class DatabaseStorage implements Storage
             $item = Arr::only($value, $this->filed);
             $attr = json_encode(Arr::except($value, $this->filed));
             $insert = array_merge($item, ['attributes' => $attr, 'key' => $key, 'guard' => $guard, 'user_id' => $userId]);
-            if (DB::name($this->table)->where(['key' => $key, '__raw_id' => $item['__raw_id']])->find()) {
-                DB::name($this->table)->where(['key' => $key, '__raw_id' => $item['__raw_id']])
+            if (Db::name($this->table)->where(['key' => $key, '__raw_id' => $item['__raw_id']])->find()) {
+                Db::name($this->table)->where(['key' => $key, '__raw_id' => $item['__raw_id']])
                     ->update(Arr::except($insert, ['key', '__raw_id']));
             } else {
-                DB::name($this->table)->insert($insert);
+                Db::name($this->table)->insert($insert);
             }
         }
     }
@@ -79,7 +79,7 @@ class DatabaseStorage implements Storage
      */
     public function get($key, $default = null)
     {
-        $items = DB::name($this->table)->where('key', $key)->select();
+        $items = Db::name($this->table)->where('key', $key)->select();
         $collection = [];
         foreach ($items as $item) {
             $item = json_decode(json_encode($item), true);
@@ -96,6 +96,6 @@ class DatabaseStorage implements Storage
      */
     public function forget($key)
     {
-        DB::name($this->table)->where('key', $key)->delete();
+        Db::name($this->table)->where('key', $key)->delete();
     }
 }

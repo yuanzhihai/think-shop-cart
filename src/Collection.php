@@ -32,4 +32,13 @@ class Collection extends BaseCollection implements ArrayAccess, Countable, Itera
     {
         return $this->offsetExists($key);
     }
+
+    public function forget($keys)
+    {
+        foreach ((array)$keys as $key) {
+            $this->offsetUnset($key);
+        }
+
+        return $this;
+    }
 }

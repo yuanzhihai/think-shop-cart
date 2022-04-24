@@ -2,7 +2,6 @@
 
 namespace yzh52521\ShoppingCart;
 
-use yzh52521\ShoppingCart\storage\SessionStorage;
 use yzh52521\ShoppingCart\storage\Storage;
 
 
@@ -24,7 +23,7 @@ class Cart
      */
     protected $model;
 
-    public function __construct(SessionStorage $storage)
+    public function __construct(Storage $storage)
     {
         $this->storage = $storage;
     }
@@ -40,7 +39,7 @@ class Cart
 
     public function name($name)
     {
-        $this->name = 'shopping_cart.'.$name;
+        $this->name = 'shopping_cart.' . $name;
 
         return $this;
     }
@@ -48,14 +47,14 @@ class Cart
     /**
      * Associated model.
      *
-     * @param  string $model The name of the model
+     * @param string $model The name of the model
      * @return Cart
-     * @throws Exception
+     * @throws ShoppingCartException
      */
     public function associate($model)
     {
         if (!class_exists($model)) {
-            throw new Exception("Invalid model name '$model'.");
+            throw new ShoppingCartException("Invalid model name '$model'.");
         }
         $this->model = $model;
 
@@ -75,7 +74,7 @@ class Cart
     public function update($rawId, $attribute)
     {
         if (!$row = $this->get($rawId)) {
-            throw new Exception('Item not found.');
+            throw new ShoppingCartException('Item not found.');
         }
 
         if (is_array($attribute)) {
@@ -200,11 +199,11 @@ class Cart
     protected function addRow($id, $name, $qty, $price, array $attributes = [])
     {
         if (!is_numeric($qty) || $qty < 1) {
-            throw new Exception('Invalid quantity.');
+            throw new ShoppingCartException('Invalid quantity.');
         }
 
         if (!is_numeric($price) || $price < 0) {
-            throw new Exception('Invalid price.');
+            throw new ShoppingCartException('Invalid price.');
         }
 
         $cart = $this->getCart();
@@ -224,7 +223,7 @@ class Cart
     {
         ksort($attributes);
 
-        return md5($id.serialize($attributes));
+        return md5($id . serialize($attributes));
     }
 
     protected function save($cart)
@@ -279,12 +278,12 @@ class Cart
     {
         return new Item(array_merge([
             '__raw_id' => $rawId,
-            'id' => $id,
-            'name' => $name,
-            'qty' => $qty,
-            'price' => $price,
-            'total' => $qty * $price,
-            '__model' => $this->model,
+            'id'       => $id,
+            'name'     => $name,
+            'qty'      => $qty,
+            'price'    => $price,
+            'total'    => $qty * $price,
+            '__model'  => $this->model,
         ], $attributes));
     }
 

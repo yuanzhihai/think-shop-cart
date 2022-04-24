@@ -261,7 +261,7 @@ database
 ```php
 ShopCart::setStorage(new DatabaseStorage());
 ShopCart::associate('app\model\Goods');
-ShopCart::name('12');
+ShopCart::name('web.12');
 $item = ShopCart::get('8a48aa7c8e5202841ddaf767bb4d10da');
 $item->goods->name; // $item->goods is instanceof 'app\model\Goods'
 ```
