@@ -26,10 +26,16 @@ use yzh52521\ShoppingCart\Item;
 
 class DatabaseStorage implements Storage
 {
+
     /**
      * @var string
      */
-    private $table = 'shopping_cart';
+    private $table;
+
+    public function __construct($table)
+    {
+        $this->table = $table ?? 'shopping_cart';
+    }
 
     /**
      * @var array
@@ -56,11 +62,11 @@ class DatabaseStorage implements Storage
         $keys = explode('.', $key);
 
         $userId = end($keys);
-        $guard = prev($keys);
-        $values=$values->toArray();
+        $guard  = prev($keys);
+        $values = $values->toArray();
         foreach ($values as $value) {
-            $item = Arr::only($value, $this->filed);
-            $attr = json_encode(Arr::except($value, $this->filed));
+            $item   = Arr::only($value, $this->filed);
+            $attr   = json_encode(Arr::except($value, $this->filed));
             $insert = array_merge($item, ['attributes' => $attr, 'key' => $key, 'guard' => $guard, 'user_id' => $userId]);
             if (Db::name($this->table)->where(['key' => $key, '__raw_id' => $item['__raw_id']])->find()) {
                 Db::name($this->table)->where(['key' => $key, '__raw_id' => $item['__raw_id']])
@@ -79,13 +85,13 @@ class DatabaseStorage implements Storage
      */
     public function get($key, $default = null)
     {
-        $items = Db::name($this->table)->where('key', $key)->select();
+        $items      = Db::name($this->table)->where('key', $key)->select();
         $collection = [];
         foreach ($items as $item) {
-            $item = json_decode(json_encode($item), true);
-            $attr = json_decode($item['attributes'], true);
-            $item = Arr::only($item, $this->filed);
-            $item = array_merge($item, $attr);
+            $item                          = json_decode(json_encode($item), true);
+            $attr                          = json_decode($item['attributes'], true);
+            $item                          = Arr::only($item, $this->filed);
+            $item                          = array_merge($item, $attr);
             $collection[$item['__raw_id']] = new Item($item);
         }
         return new Collection($collection);
