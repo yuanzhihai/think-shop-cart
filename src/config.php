@@ -10,6 +10,6 @@
  */
 
 return [
-    'storage' => '\yzh52521\ShoppingCart\storage\SessionStorage::class',
+    'storage' => '\yzh52521\ShoppingCart\storage\SessionStorage',
     'table'   => 'shopping_cart',
 ];
