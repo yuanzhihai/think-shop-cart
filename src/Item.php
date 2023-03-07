@@ -9,21 +9,21 @@ class Item extends Collection
 
     public function __get($property)
     {
-        if ($this->has($property)) {
-            return $this->get($property);
+        if ($this->has( $property )) {
+            return $this->get( $property );
         }
 
-        if (!$this->get('__model')) {
+        if (!$this->get( '__model' )) {
             return;
         }
 
-        $model = $this->get('__model');
+        $model = $this->get( '__model' );
 
-        $class = explode('\\', $model);
+        $class = explode( '\\',$model );
 
-        if (strtolower(end($class)) === $property || 'model' === $property) {
+        if (strtolower( end( $class ) ) === $property || 'model' === $property) {
             $model = new $model();
-            return $model->find($this->id);
+            return $model->find( $this->id );
         }
     }
 

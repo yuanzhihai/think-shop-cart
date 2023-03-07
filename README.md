@@ -10,7 +10,7 @@
 ## Installation
 
 ```
-composer require yzh52521/think-shop-cart:~0.5 -vvv
+composer require yzh52521/think-shop-cart:~0.5
 ```
 
 ### 会话初始化
