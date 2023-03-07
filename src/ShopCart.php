@@ -31,7 +31,7 @@ use think\Facade as BaseFacade;
 class ShopCart extends BaseFacade
 {
 
-    protected static function getFacadeClass()
+    protected static function getFacadeClass(): string
     {
         return 'cart';
     }

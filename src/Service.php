@@ -13,12 +13,11 @@ class Service extends \think\Service
     {
         $this->app->bind( 'cart',function () {
             $storage = config( 'cart.storage' );
-            $cart    = new Cart( $this->app->make( $storage ) );
+            $table   = config( 'cart.table' );
             if (SessionStorage::class == $storage) {
-                return $cart;
+                return new Cart( $this->app->make( $storage ) );
             }
-            $table = config( 'cart.table' );
-            return new Cart( $this->app->make( $storage( $table ) ) );
+            return new Cart( $this->app->make( $storage,[$table] ) );
         } );
     }
 
