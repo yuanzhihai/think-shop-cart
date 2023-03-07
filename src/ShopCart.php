@@ -28,7 +28,7 @@ use think\Facade as BaseFacade;
  * @method static isEmpty()  检查购物车是否为空
  *
  */
-class ShopCart
+class ShopCart extends BaseFacade
 {
 
     protected static function getFacadeClass()
